@@ -119,22 +119,21 @@ def add_review(request):
         data = json.loads(request.body)
         try:
             response = post_review(data)
-            return JsonResponse({"status":200})
-        except:
-            return JsonResponse({"status":401,"message":"Error in posting review"})
+            return JsonResponse({"status": 200})
+            except:
+            return JsonResponse({"status": 401, "message": "Error in posting review"})
     else:
-        return JsonResponse({"status":403,"message":"Unauthorized"})
-
+        return JsonResponse({"status": 403, "message": "Unauthorized"})
 # Get list of cars 
 def get_cars(request):
     count = CarMake.objects.filter().count()
     print(count)
-    if(count == 0):
+    if (count == 0):
         initiate()
     car_models = CarModel.objects.select_related('car_make')
     cars = []
     for car_model in car_models:
-        cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
-    return JsonResponse({"CarModels":cars})
+    cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
+    return JsonResponse({"CarModels": cars})
 
-    return JsonResponse({"CarModels":cars})
+    return JsonResponse({"CarModels": cars})
