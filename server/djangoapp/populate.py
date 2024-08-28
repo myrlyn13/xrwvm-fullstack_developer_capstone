@@ -9,9 +9,10 @@ def initiate():
           {"name": "Toyota", "description": "Great cars. Japanese technology"},
       ]
       car_make_instances = [
-for data in car_make_data:
-     car_make_instances.append
-      CarMake.objects.create(name=data['name'], description=data['description'])
+            CarMake.objects.create(
+                  name=data["name"], description=data["description"]
+            )
+            for data in car_make_data
       ]
     # Create CarModel instances with the corresponding CarMake instances
     car_model_data = [
