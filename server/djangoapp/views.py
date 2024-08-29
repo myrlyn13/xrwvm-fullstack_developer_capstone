@@ -107,8 +107,6 @@ def get_dealer_reviews(request, dealer_id):
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
-# Create a `get_dealer_details` view to render the dealer details
-     
 def get_dealer_details(request, dealer_id):
     if dealer_id:
         endpoint = "/fetchDealer/" + str(dealer_id)
@@ -117,8 +115,6 @@ def get_dealer_details(request, dealer_id):
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
-# Create a `add_review` view to submit a review
-         
 def add_review(request):
     if not request.user.is_anonymous:
         data = json.loads(request.body)
@@ -129,7 +125,7 @@ def add_review(request):
             return JsonResponse({"status": 401, "message": err})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
-# Get list of cars 
+
 def get_cars(request):
     count = CarMake.objects.filter().count()
     print(count)
@@ -137,9 +133,9 @@ def get_cars(request):
         initiate()
         car_models = CarModel.objects.select_related('car_make')
         cars = []
-        
+     
     for car_model in car_models:
         cars.append(
-            {"CarModel": car_model.name,"CarMake": car_model.car_make.name}
+            {"CarModel": car_model.name, "CarMake": car_model.car_make.name}
         )
     return JsonResponse({"CarModels": cars})
