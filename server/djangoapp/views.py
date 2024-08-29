@@ -32,14 +32,14 @@ def login_user(request):
 
 
 def logout_request(request):
-        logout(request)
-        data = {"userName": ""}
-        return JsonResponse(data)
+    logout(request)
+    data = {"userName": ""}
+    return JsonResponse(data)
 
 
 @csrf_exempt
 def registration(request):
-    context = {}
+    # context = {}
     data = json.loads(request.body)
     username = data['userName']
     password = data['password']
@@ -47,7 +47,7 @@ def registration(request):
     last_name = data['lastName']
     email = data['email']
     username_exist = False
-    email_taken = False
+    # email_taken = False
     try:
         User.objects.get(username=username)
         username_exist = True
@@ -124,7 +124,6 @@ def get_cars(request):
         initiate()
         car_models = CarModel.objects.select_related('car_make')
         cars = []
-     
     for car_model in car_models:
         cars.append(
             {"CarModel": car_model.name, "CarMake": car_model.car_make.name}
