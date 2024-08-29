@@ -59,7 +59,7 @@ def registration(request):
         username_exist = True
     except Exception as err:
         # If not, simply log this is a new user
-        logger.debug("{} is new user".format(username) + e)
+        logger.debug("{} is new user".format(username) + err)
 
     # If it is a new user
     if not username_exist:
@@ -84,7 +84,7 @@ def registration(request):
 # Update the `get_dealerships` render list of dealerships all by default,
 # particular state if state is passed
 
-def get_dealerships(request, state= "All"):
+def get_dealerships(request,state= "All"):
     if state == "All":
         endpoint = "/fetchDealers"
     else:
