@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import CarMake, CarModel
 
 # Registering models with their respective admins
-
+admin.site.register(CarMake)
+admin.sit.register(CarModel)
 # CarModelInline class
 class CarModelInline(admin.StackedInline):
     model = CarModel
