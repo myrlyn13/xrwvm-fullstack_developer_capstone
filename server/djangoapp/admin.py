@@ -3,7 +3,7 @@ from .models import CarMake, CarModel
 
 # Registering models with their respective admins
 admin.site.register(CarMake)
-admin.sit.register(CarModel)
+admin.site.register(CarModel)
 # CarModelInline class
 class CarModelInline(admin.StackedInline):
     model = CarModel
